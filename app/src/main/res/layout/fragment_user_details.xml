@@ -26,48 +26,106 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:animationResolution="@integer/material_motion_duration_long_2"
             android:outlineAmbientShadowColor="@color/purple_700"
             android:outlineSpotShadowColor="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:animationResolution="@integer/material_motion_duration_long_2"
             app:progress="@{viewModel.data}" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_margin="@dimen/standard_margin"
-            android:padding="@dimen/standard_padding"
-            app:layout_constraintBottom_toTopOf="@id/name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:loadImage="@{viewModel.avatarUrl}" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/standard_padding"
-            android:text="@{viewModel.userName}"
-            app:layout_constraintBottom_toTopOf="@id/location"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:text="Jan Kowalski" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/standard_padding"
-            android:text="@{viewModel.userLocation}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            tools:text="Pożarowo 22" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="@dimen/standard_margin"
+                    android:padding="@dimen/standard_padding"
+                    app:layout_constraintBottom_toTopOf="@id/name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:loadCircleImage="@{viewModel.avatarUrl}" />
 
+                <ImageView
+                    android:id="@+id/name_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:src="@drawable/ic_user"
+                    app:layout_constraintBottom_toTopOf="@id/location"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/name"
+                    app:layout_constraintTop_toTopOf="@id/name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/standard_padding"
+                    android:paddingBottom="@dimen/standard_padding"
+                    android:text="@{viewModel.userName}"
+                    app:layout_constraintBottom_toTopOf="@id/location"
+                    app:layout_constraintLeft_toRightOf="@id/name_icon"
+                    tools:text="Jan Kowalski" />
+
+                <ImageView
+                    android:id="@+id/location_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:src="@drawable/ic_home"
+                    app:layout_constraintBottom_toBottomOf="@+id/location"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/location"
+                    app:layout_constraintTop_toTopOf="@id/location" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/standard_padding"
+                    android:paddingBottom="@dimen/standard_padding"
+                    android:text="@{viewModel.userLocation}"
+                    app:layout_constraintBottom_toTopOf="@id/followers"
+                    app:layout_constraintLeft_toRightOf="@id/location_icon"
+                    tools:text="Pożarowo 22" />
+
+                <ImageView
+                    android:id="@+id/followers_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:src="@drawable/ic_likes"
+                    app:layout_constraintBottom_toBottomOf="@+id/followers"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/followers"
+                    app:layout_constraintTop_toTopOf="@id/followers" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/standard_padding"
+                    android:paddingBottom="@dimen/standard_padding"
+                    android:text="@{viewModel.followers}"
+                    app:layout_constraintBottom_toTopOf="@id/location"
+                    app:layout_constraintLeft_toRightOf="@id/followers_icon"
+                    tools:text="1515 " />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

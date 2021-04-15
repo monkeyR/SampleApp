@@ -33,6 +33,10 @@ class UserDetailsViewModel(private val repository: UserDetailsRepository) : View
         data.map { it.data?.location }
     }
 
+    val followers by lazy {
+        data.map { it.data?.followersCount.toString() }
+    }
+
     fun onViewCreated(id: Int) {
         userId = id
         dataRefreshTrigger.postValue(Unit)
