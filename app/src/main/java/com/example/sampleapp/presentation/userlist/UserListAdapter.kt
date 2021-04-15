@@ -31,7 +31,7 @@ class UserListAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as UserViewHolder).onBind(
-            UserItemViewModel(
+            UserListItem(
                 items[position],
                 context
             )
@@ -40,7 +40,7 @@ class UserListAdapter(private val context: Context) :
 
     private inner class UserViewHolder(private val dataBinding: ItemUserDetailsBinding) :
         RecyclerView.ViewHolder(dataBinding.root) {
-        fun onBind(itemViewModel: UserItemViewModel) {
+        fun onBind(itemViewModel: UserListItem) {
             dataBinding.item = itemViewModel
         }
     }

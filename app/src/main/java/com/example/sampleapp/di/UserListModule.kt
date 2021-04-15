@@ -2,7 +2,7 @@ package com.example.sampleapp.di
 
 import com.example.sampleapp.data.api.UserListApi
 import com.example.sampleapp.data.mapper.UserMapper
-import com.example.sampleapp.data.repository.UserListDataSource
+import com.example.sampleapp.data.repository.UserListApiRepository
 import com.example.sampleapp.domain.userlist.UserListRepository
 import com.example.sampleapp.presentation.userlist.UserListViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -15,7 +15,7 @@ val UserListModule = module {
 
     single { UserMapper() }
 
-    single<UserListRepository> { UserListDataSource(createUserListService(get()), get()) }
+    single<UserListRepository> { UserListApiRepository(createUserListService(get()), get()) }
 }
 
 fun createUserListService(retrofit: Retrofit): UserListApi {

@@ -2,7 +2,7 @@ package com.example.sampleapp.di
 
 import com.example.sampleapp.data.api.UserDetailsApi
 import com.example.sampleapp.data.mapper.UserDetailsMapper
-import com.example.sampleapp.data.repository.UserDetailsDataSource
+import com.example.sampleapp.data.repository.UserDetailsApiRepository
 import com.example.sampleapp.domain.details.UserDetailsRepository
 import com.example.sampleapp.presentation.details.UserDetailsViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -15,7 +15,7 @@ val UserDetailsModule = module {
 
     single { UserDetailsMapper(get()) }
 
-    single<UserDetailsRepository> { UserDetailsDataSource(createUserDetailsService(get()), get()) }
+    single<UserDetailsRepository> { UserDetailsApiRepository(createUserDetailsService(get()), get()) }
 }
 
 fun createUserDetailsService(retrofit: Retrofit): UserDetailsApi {

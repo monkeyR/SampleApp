@@ -20,7 +20,14 @@ class MyApplication : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@MyApplication)
-            modules(listOf(ApplicationModule, UserDetailsModule, NetworkModule, UserListModule))
+            modules(
+                listOf(
+                    ApplicationModule,
+                    UserDetailsModule,
+                    NetworkModule,
+                    UserListModule
+                )
+            )
         }
     }
 }

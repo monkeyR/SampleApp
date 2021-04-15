@@ -2,8 +2,7 @@ package com.example.sampleapp.data.mapper
 
 import com.example.sampleapp.data.model.UserDetailsEntity
 import com.example.sampleapp.domain.details.UserDetailsModel
-import com.example.sampleapp.presentation.utils.DateFormatter
-import java.util.*
+import com.example.sampleapp.presentation.common.DateFormatter
 
 class UserDetailsMapper(private val dateFormatter: DateFormatter) {
 
@@ -15,7 +14,5 @@ class UserDetailsMapper(private val dateFormatter: DateFormatter) {
         followersCount = userDetails.followers,
         githubRepoCount = userDetails.public_repos,
         created = dateFormatter.parseDate(userDetails.created_at)
-
     )
-
 }

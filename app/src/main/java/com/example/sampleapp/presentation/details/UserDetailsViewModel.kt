@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
-import com.example.sampleapp.domain.asStatusLiveData
+import com.example.sampleapp.domain.common.asStatusLiveData
 import com.example.sampleapp.domain.details.UserDetailsRepository
-import com.example.sampleapp.presentation.utils.SingleEventLiveData
+import com.example.sampleapp.presentation.common.SingleEventLiveData
 import kotlin.properties.Delegates
 
 class UserDetailsViewModel(private val repository: UserDetailsRepository) : ViewModel() {

@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.example.sampleapp.presentation.userlist.UserItemViewModel" />
+            type="com.example.sampleapp.presentation.userlist.UserListItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
