@@ -26,4 +26,13 @@ object BindingAdapter {
         else
             view.visibility = View.VISIBLE
     }
+
+    @BindingAdapter("visibleOrGone")
+    @JvmStatic
+    fun <X> visibleOrGone(view: View, data: LiveData<X>) {
+        if (data.value != null)
+            view.visibility = View.VISIBLE
+        else
+            view.visibility = View.GONE
+    }
 }

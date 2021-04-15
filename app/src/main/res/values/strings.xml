@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">SampleApp</string>
     <string name="retry">Spróbuj ponownie</string>
     <string name="error_message">Coś poszło nie tak</string>
     <string name="error_title">Ooops!</string>

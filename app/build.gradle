@@ -22,6 +22,15 @@ android {
         buildConfigField 'String', 'API_URL', '"https://api.github.com/"'
     }
 
+    signingConfigs {
+        config {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file('keystore.key')
+            storePassword 'android'
+        }
+    }
+
     buildFeatures {
         viewBinding true
         dataBinding true
@@ -31,16 +40,24 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            versionNameSuffix ".release"
             applicationIdSuffix ".release"
+            resValue "string", "app_name", "SampleAppRelease"
+            signingConfig signingConfigs.config
         }
         debug {
             minifyEnabled false
+            versionNameSuffix '-debug'
             applicationIdSuffix ".debug"
+            resValue "string", "app_name", "SampleAppDebug"
             debuggable true
         }
         qa {
             minifyEnabled false
             applicationIdSuffix ".qa"
+            versionNameSuffix '-qa'
+            resValue "string", "app_name", "SampleAppQa"
+            signingConfig signingConfigs.config
         }
     }
 

@@ -5,6 +5,7 @@ import androidx.datastore.DataStore
 import androidx.datastore.preferences.*
 import com.example.sampleapp.domain.OpenApplicationRepository
 import kotlinx.coroutines.flow.*
+import org.koin.android.BuildConfig
 import java.io.IOException
 
 class DataStoreOpenApplicationRepository(context: Context) : OpenApplicationRepository {
@@ -18,7 +19,7 @@ class DataStoreOpenApplicationRepository(context: Context) : OpenApplicationRepo
 
     init {
         dataStore = applicationContext.createDataStore(
-            name = "app_preferences"
+            name = "app_preferences" + BuildConfig.FLAVOR
         )
     }
 
