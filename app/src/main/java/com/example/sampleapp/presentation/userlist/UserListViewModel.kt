@@ -13,7 +13,7 @@ class UserListViewModel(private val repository: UserListRepository) : ViewModel(
 
     val data by lazy {
         dataRefreshTrigger.switchMap {
-            repository.getUsers().asStatusLiveData(viewModelScope.coroutineContext, 5000L)
+            repository.getUsers().asStatusLiveData(viewModelScope.coroutineContext)
         }
     }
 

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlin.coroutines.CoroutineContext
 
-fun <T> Flow<T>.asStatusLiveData(coroutineContext: CoroutineContext, timeout: Long) =
+fun <T> Flow<T>.asStatusLiveData(coroutineContext: CoroutineContext, timeout: Long = 5000L) =
     liveData(coroutineContext, timeout) {
         emit(StatusResult(status = Status.IN_PROGRESS))
 

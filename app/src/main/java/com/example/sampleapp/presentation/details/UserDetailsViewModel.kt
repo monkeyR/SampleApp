@@ -17,16 +17,18 @@ class UserDetailsViewModel(private val repository: UserDetailsRepository) : View
     val data by lazy {
         dataRefreshTrigger.switchMap {
             repository.getUserDetails(userId)
-                .asStatusLiveData(viewModelScope.coroutineContext, 5000L)
+                .asStatusLiveData(viewModelScope.coroutineContext)
         }
     }
 
     val avatarUrl by lazy {
         data.map { it.data?.avatarUrl }
     }
+
     val userName by lazy {
         data.map { it.data?.name }
     }
+
     val userLocation by lazy {
         data.map { it.data?.location }
     }
